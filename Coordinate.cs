@@ -1,6 +1,6 @@
 using System.Numerics;
 
-namespace Raven.Lib {
+namespace Raven.Util {
     /// <summary>
     /// Basicly a Vector2Int, just with a cooler name cause it's used for games. :)
     /// </summary>
@@ -28,12 +28,20 @@ namespace Raven.Lib {
         }
 
         public static Coordinate operator + (Coordinate a) => a;
-        public static Coordinate operator + (Coordinate a, Coordinate b) => new Coordinate(a.X + b.Y, a.Y + b.Y);
+        public static Coordinate operator + (Coordinate a, Coordinate b) => new Coordinate(a.X + b.X, a.Y + b.Y);
         public static Coordinate operator - (Coordinate a) => new Coordinate(-a.X, -a.Y);
         public static Coordinate operator - (Coordinate a, Coordinate b) => new Coordinate(a.X - b.X, a.Y - b.Y);
         public static Coordinate operator * (Coordinate a, int mult) => new Coordinate(a.X * mult, a.Y * mult);
-        public static Coordinate operator * (Coordinate a, Coordinate b) => new Coordinate(a.X * b.X, a.X * b.X);
+        public static Coordinate operator * (Coordinate a, Coordinate b) => new Coordinate(a.X * b.X, a.Y * b.Y);
         public static Coordinate operator / (Coordinate a, int div) => new Coordinate(a.X / div, a.Y / div);
-        public static Coordinate operator / (Coordinate a, Coordinate b) => new Coordinate(a.X / b.X, a.X / b.X);
+        public static Coordinate operator / (Coordinate a, Coordinate b) => new Coordinate(a.X / b.Y, a.X / b.Y);
+        public static bool operator == (Coordinate a, Coordinate b) => a.X == b.X && a.Y == b.Y;
+        public static bool operator != (Coordinate a, Coordinate b) => a.X != b.X && a.Y != b.Y;
+
+        public override bool Equals (object obj) => obj is Coordinate ? X == (obj as Coordinate).X && Y == (obj as Coordinate).Y : false;
+
+        public override int GetHashCode ( ) => ((X * 269) + Y) * 269;
+
+        public override string ToString ( ) => $"({X}, {Y})";
     }
 }
