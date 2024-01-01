@@ -38,7 +38,7 @@ namespace Raven.Util {
         public static bool operator == (Coordinate a, Coordinate b) => a.X == b.X && a.Y == b.Y;
         public static bool operator != (Coordinate a, Coordinate b) => a.X != b.X && a.Y != b.Y;
 
-        public override bool Equals (object obj) => obj is Coordinate ? X == (obj as Coordinate).X && Y == (obj as Coordinate).Y : false;
+        public override bool Equals (object? obj) => obj is Coordinate && X == ((Coordinate) obj).X && Y == ((Coordinate) obj).Y;
 
         public override int GetHashCode ( ) => ((X * 269) + Y) * 269;
 
