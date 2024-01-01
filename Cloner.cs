@@ -5,8 +5,8 @@
             var targetType = typeof (TTarget);
 
             // Add a check for inheritance here
-            if (!typeof (TTarget).IsAssignableFrom (sourceType)) {
-                throw new InvalidOperationException ($"Source {typeof (TSource).FullName} must inherit from {typeof (TTarget).FullName}.");
+            if (!typeof (TSource).IsAssignableFrom (targetType)) {
+                throw new InvalidOperationException ($"Source {typeof (TTarget).FullName} must must be a derived type of {typeof (TSource).FullName}.");
             }
 
             var targetInstance = Activator.CreateInstance (targetType);
