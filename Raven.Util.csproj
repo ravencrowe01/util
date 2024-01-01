@@ -4,7 +4,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <AssemblyName>Raven.Util</AssemblyName>
-    <Version>1.0.4</Version>
+    <Version>1.1.0</Version>
     <Title>Raven Util</Title>
     <Authors>Raven Crowe</Authors>
     <Description>A simple toolbox made by a corvid.</Description>

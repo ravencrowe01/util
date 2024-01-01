@@ -1,6 +1,6 @@
 ﻿namespace Raven.Util {
     public static class Cloner {
-        public static TSource? Clone<TSource, TTarget> () where TSource : class where TTarget : class, new() {
+        public static TSource? Clone<TSource, TTarget> (TSource source) where TSource : class where TTarget : class, new() {
             var sourceType = typeof (TSource);
             var targetType = typeof (TTarget);
 
@@ -16,7 +16,7 @@
             foreach (var property in properties) {
                 var targetProperty = targetType.GetProperty (property.Name);
                 if (targetProperty != null) {
-                    var value = property.GetValue (targetInstance);
+                    var value = property.GetValue (source);
                     targetProperty.SetValue (targetInstance, value);
                 }
             }
