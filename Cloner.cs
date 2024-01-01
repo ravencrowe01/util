@@ -1,6 +1,6 @@
 ﻿namespace Raven.Util {
     public static class Cloner {
-        public static TSource? Clone<TSource, TTarget> (TSource source) where TSource : class where TTarget : class, new() {
+        public static TTarget? Clone<TSource, TTarget> (TSource source) where TSource : class where TTarget : class, new() {
             var sourceType = typeof (TSource);
             var targetType = typeof (TTarget);
 
@@ -21,7 +21,7 @@
                 }
             }
 
-            return targetInstance as TSource;
+            return targetInstance as TTarget;
         }
     }
 }
